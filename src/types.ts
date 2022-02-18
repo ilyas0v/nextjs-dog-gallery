@@ -1,5 +1,10 @@
 export type GalleryItemType = {
-    id: string,
-    src: string,
-    previewCount: number
+  id: string;
+  title: string;
+  src: string;
+  viewCount: number;
+};
+
+export type GalleryItemProps = {
+    item: GalleryItemType
 }

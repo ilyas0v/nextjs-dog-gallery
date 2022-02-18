@@ -11,24 +11,23 @@ import { getDogPictures } from "./services";
 // });
 
 export const galleryItemsSelector = selector({
-    key: 'galleryItemsSelector',
-    get: async ({ get }) => {
-        try {
-            const result = await getDogPictures(50);
-            return result;
-        } catch (error) {
-            return [];
-        }
+  key: "galleryItemsSelector",
+  get: async ({ get }) => {
+    try {
+      const result = await getDogPictures(50);
+      return result;
+    } catch (error) {
+      return [];
     }
-})
-
-export const galleryItemsState = atom({
-    key: 'galleryItemsState',
-    default: galleryItemsSelector
+  },
 });
 
+export const galleryItemsState = atom({
+  key: "galleryItemsState",
+  default: galleryItemsSelector,
+});
 
 export const openedPictureState = atom({
-    key: 'openedPictureState',
-    default: {}
+  key: "openedPictureState",
+  default: {},
 });

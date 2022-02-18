@@ -1,38 +1,49 @@
-import Image from "next/image"
+import Image from "next/image";
 import { Button, Card } from "react-bootstrap";
-import { useRecoilState, useSetRecoilState } from "recoil"
+import { useRecoilState, useSetRecoilState } from "recoil";
 import { galleryItemsState, openedPictureState } from "../states";
+import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
+import { GalleryItemProps } from "../types";
+import { EyeIcon } from "./EyeIcon";
 
-export const GalleryItem = ( {item} ) => {
+export const GalleryItem: React.FC<GalleryItemProps> = (props) => {
+  const { item } = props;
   const [galleryItems, setGalleryItems] = useRecoilState(galleryItemsState);
   const setOpenedPicture = useSetRecoilState(openedPictureState);
 
   const viewPicture = () => {
     setOpenedPicture(item);
     incrementViewCount();
-  }
+  };
 
   const incrementViewCount = () => {
     let galleryItemsClone = [...galleryItems];
-    let index = galleryItems.findIndex((galleryitem: object) => galleryitem === item);
-    
+    let index = galleryItems.findIndex(
+      (galleryitem: object) => galleryitem === item
+    );
+
     galleryItemsClone[index] = {
       ...item,
-      viewCount: item.viewCount + 1
+      viewCount: item.viewCount + 1,
     };
 
     setGalleryItems(galleryItemsClone);
-  }
+  };
 
   return (
-      <>
+    <>
       <Card className="picture-card" onClick={viewPicture}>
-          <Card.Img variant="top" src={item.src} />
-          <Card.Body>
-            <Card.Title>Card Title</Card.Title>
-            <p>{ item.viewCount }</p>
-          </Card.Body>
-        </Card>
-      </>
-  )
-}
+        <Card.Img variant="top" src={item.src} />
+        <Card.Body>
+          <div className="d-flex justify-content-between">
+            <p>{item.title}</p>
+            <p className="d-flex justify-content-center align-items-center">
+              <span> {item.viewCount}&nbsp;&nbsp;</span>
+              <EyeIcon />
+            </p>
+          </div>
+        </Card.Body>
+      </Card>
+    </>
+  );
+};

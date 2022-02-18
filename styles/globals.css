@@ -15,16 +15,20 @@ a {
   box-sizing: border-box;
 } */
 
+body {
+  background-color: #ddd;
+}
 
 .picture-card {
   width: 20% !important;
   min-width: 20% !important;
   padding: 10px;
   margin-bottom: 10px;
+  border: none !important;
 }
 
 .picture-card img {
-  width:  100%;
+  width: 100%;
   height: 200px;
   object-fit: cover;
 }
@@ -34,7 +38,6 @@ a {
   text-align: center;
 }
 
-
 .spinner-custom {
   text-align: center;
   padding: 20px;
@@ -42,15 +45,35 @@ a {
 
 .modal-picture {
   max-width: 100%;
+  min-width: 300px;
   display: block;
   margin: auto;
+}
+
+.react-transform-wrapper {
+  margin: auto !important;
+}
+
+.picture-card .card-body {
+  position: absolute;
+  background-image: linear-gradient(to top, #000, #00000026);
+  bottom: 10px;
+  color: #fff;
+  width: 92%;
+  padding-bottom: 0px;
+  margin-bottom: 0px;
+}
+
+@media only screen and (max-width: 1100px) {
+  .picture-card {
+    width: 50% !important;
+    min-width: 50% !important;
+  }
 }
 
 @media only screen and (max-width: 600px) {
   .picture-card {
     width: 100% !important;
     min-width: 100% !important;
-    padding: 10px;
-    margin-bottom: 10px;
   }
 }
