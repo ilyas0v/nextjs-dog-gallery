@@ -2,8 +2,7 @@ import Image from "next/image";
 import { Button, Card } from "react-bootstrap";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { galleryItemsState, openedPictureState } from "../states";
-import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
-import { GalleryItemProps } from "../types";
+import { GalleryItemProps, GalleryItemType } from "../types";
 import { EyeIcon } from "./EyeIcon";
 
 export const GalleryItem: React.FC<GalleryItemProps> = (props) => {
@@ -19,7 +18,7 @@ export const GalleryItem: React.FC<GalleryItemProps> = (props) => {
   const incrementViewCount = () => {
     let galleryItemsClone = [...galleryItems];
     let index = galleryItems.findIndex(
-      (galleryitem: object) => galleryitem === item
+      (galleryitem: GalleryItemType) => galleryitem === item
     );
 
     galleryItemsClone[index] = {

@@ -1,7 +1,6 @@
 import { Button, ButtonGroup, Card, Modal } from "react-bootstrap";
 import { useRecoilState, useSetRecoilState } from "recoil";
 import { openedPictureState } from "../states";
-import { isObjectEmpty } from "../utils";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import React from "react";
 import { GalleryItemModel } from "../types";
