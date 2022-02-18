@@ -4,17 +4,18 @@ import { openedPictureState } from "../states";
 import { isObjectEmpty } from "../utils";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import React from "react";
+import { GalleryItemModel } from "../types";
 
 export const PreviewModal: React.FC = () => {
   const [openedPicture, setOpenedPicture] = useRecoilState(openedPictureState);
 
   const closeModal = () => {
-    setOpenedPicture({});
+    setOpenedPicture(new GalleryItemModel);
   };
 
   return (
     <Modal
-      show={!isObjectEmpty(openedPicture)}
+      show={ openedPicture.title != ''}
       onHide={() => closeModal()}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"

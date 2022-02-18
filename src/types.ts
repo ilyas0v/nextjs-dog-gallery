@@ -6,5 +6,19 @@ export type GalleryItemType = {
 };
 
 export type GalleryItemProps = {
-    item: GalleryItemType
+  item: GalleryItemType;
+};
+
+export class GalleryItemModel {
+  public id: string;
+  public title: string;
+  public src: string;
+  public viewCount: number;
+
+  constructor() {
+    this.id = "";
+    this.title = "";
+    this.src = "";
+    this.viewCount = 0;
+  }
 }
