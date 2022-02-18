@@ -3,13 +3,13 @@ import { useRecoilState, useSetRecoilState } from "recoil";
 import { openedPictureState } from "../states";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import React from "react";
-import { GalleryItemModel } from "../types";
+import { emptyGalleryItem } from "../utils";
 
 export const PreviewModal: React.FC = () => {
   const [openedPicture, setOpenedPicture] = useRecoilState(openedPictureState);
 
   const closeModal = () => {
-    setOpenedPicture(new GalleryItemModel);
+    setOpenedPicture(emptyGalleryItem());
   };
 
   return (

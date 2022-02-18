@@ -1,6 +1,6 @@
 import { atom, selector } from "recoil";
 import { getDogPictures } from "./services";
-import { GalleryItemModel } from "./types";
+import { emptyGalleryItem } from "./utils";
 
 // export const pictureStateById = (id: string) => atom({
 //     key: `picture_${id}`,
@@ -30,5 +30,5 @@ export const galleryItemsState = atom({
 
 export const openedPictureState = atom({
   key: "openedPictureState",
-  default: new GalleryItemModel,
+  default: emptyGalleryItem(),
 });

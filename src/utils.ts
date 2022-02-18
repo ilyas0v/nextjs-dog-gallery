@@ -1,4 +1,5 @@
 import { v4 as uuidv4 } from "uuid";
+import { GalleryItemModel } from "./types";
 
 /**
  * 
@@ -41,3 +42,11 @@ export const shuffleArray = (array: any[]) => {
   }
   return array;
 };
+
+/**
+ * 
+ * @returns Empty gallery item
+ */
+export const emptyGalleryItem = () => {
+  return new GalleryItemModel;
+}
