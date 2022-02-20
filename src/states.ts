@@ -28,6 +28,11 @@ export const galleryItemsState = atom({
   default: galleryItemsSelector,
 });
 
+export const previewModalOpened = atom({
+  key: 'previewModalOpened',
+  default: false
+});
+
 export const openedPictureState = atom({
   key: "openedPictureState",
   default: emptyGalleryItem(),

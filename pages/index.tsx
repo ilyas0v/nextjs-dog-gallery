@@ -1,7 +1,11 @@
 import { NextPage } from "next";
 import { CardGroup, Container } from "react-bootstrap";
-import { useRecoilStateLoadable } from "recoil";
-import { galleryItemsState } from "../src/states";
+import { useRecoilState, useRecoilStateLoadable } from "recoil";
+import {
+  galleryItemsState,
+  openedPictureState,
+  previewModalOpened,
+} from "../src/states";
 import { GalleryItem } from "../src/components/GalleryItem";
 import { getDogPictures } from "../src/services";
 import { PreviewModal } from "../src/components/PreviewModal";
@@ -13,6 +17,10 @@ import { MAIN_TITLE } from "../src/constants";
 const Home: NextPage = () => {
   const [galleryItems, setGalleryItems] =
     useRecoilStateLoadable(galleryItemsState);
+
+  const [isPreviewModalOpened, setPreviewModalOpened] =
+    useRecoilState(previewModalOpened);
+  const [openedPicture, setOpenedPicture] = useRecoilState(openedPictureState);
 
   const getMorePictures = async () => {
     let newPictures = await getDogPictures(25);
@@ -30,7 +38,10 @@ const Home: NextPage = () => {
         <title>{ MAIN_TITLE }</title>
       </Head>
 
-      <PreviewModal />
+      <PreviewModal
+        isOpen={isPreviewModalOpened}
+        openedPicture={openedPicture}
+      />
 
       <InfiniteScroll
         dataLength={galleryItems.contents.length}

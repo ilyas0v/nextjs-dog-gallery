@@ -1,7 +1,11 @@
 import Image from "next/image";
 import { Button, Card } from "react-bootstrap";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { galleryItemsState, openedPictureState } from "../states";
+import {
+  galleryItemsState,
+  openedPictureState,
+  previewModalOpened,
+} from "../states";
 import { GalleryItemProps, GalleryItemType } from "../types";
 import { EyeIcon } from "./EyeIcon";
 
@@ -9,9 +13,11 @@ export const GalleryItem: React.FC<GalleryItemProps> = (props) => {
   const { item } = props;
   const [galleryItems, setGalleryItems] = useRecoilState(galleryItemsState);
   const setOpenedPicture = useSetRecoilState(openedPictureState);
+  const setPreviewModalOpened = useSetRecoilState(previewModalOpened);
 
   const viewPicture = () => {
     setOpenedPicture(item);
+    setPreviewModalOpened(true);
     incrementViewCount();
   };
 

@@ -9,6 +9,11 @@ export type GalleryItemProps = {
   item: GalleryItemType;
 };
 
+export type PreviewModalProps = {
+  openedPicture: GalleryItemType;
+  isOpen: boolean;
+};
+
 export class GalleryItemModel {
   public id: string;
   public title: string;

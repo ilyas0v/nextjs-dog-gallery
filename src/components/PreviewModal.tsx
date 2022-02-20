@@ -1,20 +1,25 @@
 import { Button, ButtonGroup, Card, Modal } from "react-bootstrap";
 import { useRecoilState, useSetRecoilState } from "recoil";
-import { openedPictureState } from "../states";
+import { openedPictureState, previewModalOpened } from "../states";
 import { TransformWrapper, TransformComponent } from "react-zoom-pan-pinch";
 import React from "react";
 import { emptyGalleryItem } from "../utils";
+import { PreviewModalProps } from "../types";
 
-export const PreviewModal: React.FC = () => {
-  const [openedPicture, setOpenedPicture] = useRecoilState(openedPictureState);
-
+export const PreviewModal: React.FC<PreviewModalProps> = ({
+  isOpen,
+  openedPicture,
+}) => {
+  const setOpenedPicture = useSetRecoilState(openedPictureState);
+  const setPreviewModalOpened = useSetRecoilState(previewModalOpened);
   const closeModal = () => {
     setOpenedPicture(emptyGalleryItem());
+    setPreviewModalOpened(false);
   };
 
   return (
     <Modal
-      show={ openedPicture.title != ''}
+      show={isOpen}
       onHide={() => closeModal()}
       size="lg"
       aria-labelledby="contained-modal-title-vcenter"
